@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="layout-wrapper">
+        <div class="layout-container">
+            <div class="todo" id="app">
+                <h1 class="title">
+                    Symfony - Vue Todo App
+                </h1>
+                <div class="todo-form">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    {{ form_row(form.description, {'attr': {'placeholder': 'What needs to be done?'} }) }}
+
+                    {{ form_end(form) }}
+                </div>
+
+                <ul class="todo-list">
+                    {% for todo in todos %}
+                        <li class="todo-row">
+                            <div>
+                                <input id="todo-done-{{ todo.id }}" type="checkbox">
+                                <label for="todo-done-{{ todo.id }}" class="todo-done"></label>
+                                <label class="todo-description">{{ todo.description }}</label>
+                                <button id="todo-destroy-{{ todo.id }}" class="todo-destroy"><i class="fa fa-times"></i></button>
+                            </div>
+
+                        </li>
+                    {% else %}
+                        <div>You have nothing to do :)</div>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -2025,4 +2025,22 @@ body {
   background-color: #35495E;
   color: #FFF; }
 
-/*# sourceMappingURL=styles-fcca44e9ad.css.map */
+.layout-container {
+  width: 60%;
+  margin: 0 auto; }
+
+.title {
+  margin-top: 0; }
+
+.todo {
+  text-align: center;
+  margin-top: 100px;
+  background: #41B883;
+  padding: 30px;
+  border-radius: 4px; }
+
+.todo-list {
+  background-color: #FFF;
+  color: #000; }
+
+/*# sourceMappingURL=styles-6f05b3085b.css.map */

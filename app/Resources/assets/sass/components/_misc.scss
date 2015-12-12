@@ -1,0 +1,15 @@
+.title{
+  margin-top: 0;
+}
+
+input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+input[type=checkbox] + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+input[type=checkbox] + label:before { content: "\f10c"; } /* unchecked icon */
+input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+
+input[type=checkbox]:checked + label:before { content: "\f05d"; color: #41B883; } /* checked icon */
+input[type=checkbox]:checked + label:before {  } /* allow space for check mark */

@@ -33,7 +33,7 @@ class Todo
      *
      * @ORM\Column(name="isComplete", type="boolean")
      */
-    private $isComplete;
+    private $isComplete = false;
 
 
     /**
@@ -93,5 +93,6 @@ class Todo
     {
         return $this->isComplete;
     }
+
 }
 
