@@ -46,7 +46,6 @@ app.copy = function(srcFiles, outputDir) {
 gulp.task('styles', function() {
 
     app.addStyle([
-        config.bowerDir+'/bootstrap/dist/css/bootstrap.css',
         config.bowerDir+'/font-awesome/css/font-awesome.css',
         config.assetsDir+'/sass/styles.scss'
     ], 'styles.css');
@@ -55,9 +54,7 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
     gulp.src([
-
-        config.bowerDir+'/jquery/dist/jquery.js',
-        config.bowerDir+'/bootstrap/dist/js/bootstrap.js',
+        config.bowerDir+'/vue/dist/vue.min.js',
         config.assetsDir+'/js/scripts.js'
     ])
         .pipe(plumber())
@@ -70,7 +67,6 @@ gulp.task('scripts', function() {
 
 gulp.task('fonts', function() {
     app.copy([
-            config.bowerDir+'/bootstrap/dist/fonts/*',
             config.bowerDir+'/font-awesome/fonts/*'
         ],'web/fonts'
     );

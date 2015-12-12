@@ -1,4 +1,4 @@
-var app = {
+/*var app = {
 
     init: function(){
         this.cacheDom();
@@ -31,4 +31,4 @@ var app = {
 };
 
 
-app.init();
+app.init(); */

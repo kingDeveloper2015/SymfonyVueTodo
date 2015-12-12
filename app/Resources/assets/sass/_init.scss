@@ -1,22 +1,7 @@
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #424E5D;
-$text-color:    #FFF;
-
 
 body{
-  color: $text-color;
-  background-color: $primary-color;
-}
-a{
-  text-decoration: none;
-  color: $text-color;
-
-  &:hover{
-    text-decoration: none;
-  }
-
-  &:focus{
-    text-decoration: none;
-  }
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #35495E;
+  color: #FFF;
 }
 

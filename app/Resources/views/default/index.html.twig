@@ -3,7 +3,11 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            Symfony Vue Todo App!!!
+            {% for todo in todos %}
+                <div>{{ todo.description }}</div>
+            {% else %}
+                <div>You have nothing to do :)</div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
