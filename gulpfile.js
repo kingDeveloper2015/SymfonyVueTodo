@@ -54,7 +54,8 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
     gulp.src([
-        config.bowerDir+'/vue/dist/vue.min.js',
+        config.bowerDir+'/vue/dist/vue.js',
+        config.bowerDir+'/vue-resource/dist/vue-resource.js',
         config.assetsDir+'/js/scripts.js'
     ])
         .pipe(plumber())

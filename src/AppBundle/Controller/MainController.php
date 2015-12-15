@@ -38,15 +38,20 @@ class MainController extends Controller
         return $this->render('main/index.html.twig', array('todos'=>$allTodos, 'form'=>$form->createView()));
     }
 
-    public function otherAction(){
-        //$serializer = $this->get('jms_serializer');
+    /**
+     * @Route("/api/todos", name="getTodos")
+     */
+    public function getTodosAction(){
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Todo');
+        $allTodos   = $repository->findAll();
+        $serializer = $this->get('jms_serializer');
 
-        // $allTodos = $serializer->serialize($allTodos, 'json');
+        $allTodos = $serializer->serialize($allTodos, 'json');
 
-        /* $response = new JsonResponse();
-         $response->setData(array(
-             'todos' => $allTodos
-         ));
-         return $response; */
+        $response = new JsonResponse($allTodos);
+       // $response->setData(array(
+        //    'todos' => $allTodos
+       // ));
+        return $response;
     }
 }
