@@ -37,9 +37,10 @@
                 {% verbatim %}
 
                 <ul class="todo-list">
-                    <li v-for="todo in todos" class="todo-row">
-                        <input id="todo-done-{{ todo.id }}" type="checkbox">
+                    <li v-for="todo in todos" class="todo-row" >
+                        <input id="todo-done-{{ todo.id }}" type="checkbox" v-model="todo.is_complete" @click="todo.completed = !todo.completed ">
                         <label for="todo-done-{{ todo.id }}" class="todo-done"></label>
+                        {{ todo.is_complete }}
                         <label class="todo-description">{{ todo.description }}</label>
                         <button id="todo-destroy-{{ todo.id }}" class="todo-destroy"><i class="fa fa-times"></i></button>
                     </li>
