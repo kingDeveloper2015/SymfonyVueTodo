@@ -44,12 +44,10 @@ app.copy = function(srcFiles, outputDir) {
 };
 
 gulp.task('styles', function() {
-
     app.addStyle([
         config.bowerDir+'/font-awesome/css/font-awesome.css',
         config.assetsDir+'/sass/styles.scss'
     ], 'styles.css');
-
 });
 
 gulp.task('scripts', function() {

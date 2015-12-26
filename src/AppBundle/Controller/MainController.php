@@ -4,9 +4,11 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Form\TodoType;
+use AppBundle\Entity\Todo;
 
 class MainController extends Controller
 {
@@ -40,6 +42,7 @@ class MainController extends Controller
 
     /**
      * @Route("/api/todos", name="getTodos")
+     * @Method({"GET"})
      */
     public function getTodosAction(){
         $repository = $this->getDoctrine()->getRepository('AppBundle:Todo');
@@ -52,6 +55,96 @@ class MainController extends Controller
        // $response->setData(array(
         //    'todos' => $allTodos
        // ));
+        return $response;
+    }
+
+    /**
+     * @Route("/api/todos", name="createTodo")
+     * @Method({"POST"})
+     */
+    public function createTodoAction(Request $request)
+    {
+        $body = $request->getContent();
+
+        $data = json_decode($body, true);
+
+        $todo = new Todo();
+
+        $todo->setDescription($data['description']);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($todo);
+        $em->flush();
+        $response = new JsonResponse('cewl');
+
+        return $response;
+    }
+
+    /**
+     * @Route("/api/todos/{id}", name="getTodo")
+     * @Method({"GET"})
+     */
+    public function getTodoAction(Request $request, $id){
+
+        $todo= $this->getDoctrine()->getRepository('AppBundle:Todo')->find($id);
+        $serializer = $this->get('jms_serializer');
+
+        $todo = $serializer->serialize($todo, 'json');
+
+        $response = new JsonResponse($todo);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/api/todos/{id}", name="getTodo")
+     * @Method({"PUT"})
+     */
+    public function updateTodoAction(Request $request, $id){
+
+        $todo= $this->getDoctrine()->getRepository('AppBundle:Todo')->find($id);
+        $serializer = $this->get('jms_serializer');
+
+        $body = $request->getContent();
+        $data = json_decode($body, true);
+
+        $todo->setDescription($data['description']);
+
+        $todo->setIsComplete($data['is_complete']);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($todo);
+        $em->flush();
+
+        $todo = $serializer->serialize($todo, 'json');
+
+        $response = new JsonResponse($todo);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/api/todos/{id}", name="deleteTodos")
+     * @Method({"DELETE"})
+     */
+    public function deleteTodosAction(Request $request, $id)
+    {
+
+        $body = $request->getContent();
+
+        $data = json_decode($body, true);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $todo= $this->getDoctrine()->getRepository('AppBundle:Todo')->find($id);
+
+        $em->remove($todo);
+        $em->flush();
+
+        $response = new JsonResponse('deleted');
+
         return $response;
     }
 }
