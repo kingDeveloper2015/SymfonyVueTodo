@@ -13,3 +13,11 @@ input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between c
 
 input[type=checkbox]:checked + label:before { content: "\f05d"; color: #41B883; } /* checked icon */
 input[type=checkbox]:checked + label:before {  } /* allow space for check mark */
+
+.github-icon svg{
+  height: 2em;
+}
+
+.small-svg svg{
+  height: 4em;
+}
