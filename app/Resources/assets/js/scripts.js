@@ -11,10 +11,15 @@ new Vue({
 
     data: {
         newTodo : '',
-        todos: []
+        todos: [],
+        show: true
     },
+
     methods: {
         addTodo: function(){
+            if(this.todos.length >= 10){
+                alert('You are too busy bro... You can\'t have more than 10 Tasks')
+            }
             var description = this.newTodo.trim();
             if (!description) {
                 return;
@@ -29,7 +34,6 @@ new Vue({
                 console.log(data);
                 this.todos = data;
             })
-            //this.todos.push({ description: description, is_complete: false });
             this.newTodo = '';
         },
         completeTodo: function(todo){

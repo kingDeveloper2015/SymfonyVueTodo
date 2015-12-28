@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class TodoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getTodosNumber()
+    {
+        $query = $this->getEntityManager()
+                ->createQuery(
+                    'SELECT t FROM AppBundle:Todo t'
+                )
+                ->getResult();
+
+        return count($query);
+    }
 }

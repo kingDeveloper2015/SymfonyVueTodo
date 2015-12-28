@@ -17,6 +17,7 @@ class MainController extends Controller
      */
     public function indexAction(Request $request)
     {
+
         $repository = $this->getDoctrine()->getRepository('AppBundle:Todo');
         $allTodos   = $repository->findAll();
         $todoNumber = count($allTodos);
@@ -52,9 +53,7 @@ class MainController extends Controller
         $allTodos = $serializer->serialize($allTodos, 'json');
 
         $response = new JsonResponse($allTodos);
-       // $response->setData(array(
-        //    'todos' => $allTodos
-       // ));
+
         return $response;
     }
 
@@ -64,6 +63,13 @@ class MainController extends Controller
      */
     public function createTodoAction(Request $request)
     {
+        $number = $this->getDoctrine()->getRepository('AppBundle:Todo')->getTodosNumber();
+        if( $number >= 10 ){
+
+            $response = new JsonResponse('You are too busy bro... You can\'t have other tasks :) ');
+
+            return $response;
+        }
         $body = $request->getContent();
 
         $data = json_decode($body, true);
@@ -133,8 +139,6 @@ class MainController extends Controller
     {
 
         $body = $request->getContent();
-
-        $data = json_decode($body, true);
 
         $em = $this->getDoctrine()->getManager();
 

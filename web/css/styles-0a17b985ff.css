@@ -2054,8 +2054,26 @@ input[type=checkbox]:checked + label:before {
 
 /* checked icon */
 /* allow space for check mark */
-.github-icon {
-  font-size: 2em; }
+.github-icon svg {
+  height: 2em; }
+
+.symfony-icon {
+  display: inline-block; }
+
+.symfony-icon svg {
+  height: 3em;
+  fill: #FFF; }
+
+.vue-icon {
+  height: 3em; }
+
+.project-icons {
+  text-align: center;
+  margin-top: 20px;
+  color: #FFF; }
+  .project-icons .fa-plus {
+    vertical-align: 17px;
+    margin: 20px; }
 
 .todo {
   text-align: center;
@@ -2102,4 +2120,4 @@ input[type=checkbox]:checked + label:before {
   .todo-destroy:hover {
     color: #DD4E41; }
 
-/*# sourceMappingURL=styles-8a221b9031.css.map */
+/*# sourceMappingURL=styles-0a17b985ff.css.map */

@@ -18,6 +18,25 @@ input[type=checkbox]:checked + label:before {  } /* allow space for check mark *
   height: 2em;
 }
 
-.small-svg svg{
-  height: 4em;
+.symfony-icon{
+  display: inline-block;
+}
+
+.symfony-icon svg{
+  height: 3em;
+  fill: #FFF;
+
+}
+.vue-icon{
+  height: 3em;
+}
+.project-icons{
+  text-align: center;
+  margin-top: 20px;
+  color: #FFF;
+
+  .fa-plus{
+    vertical-align: 17px;
+    margin: 20px;
+  }
 }
